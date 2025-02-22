@@ -1,0 +1,146 @@
+/* Custom font included */
+@font-face {
+        font-family: "Product Sans";
+        src: url(fonts/Product_Sans_Regular.ttf);
+}
+
+body {
+        background-color: white;
+        font-family: "Product Sans", "Segoe UI", Arial, Helvetica, sans-serif;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        margin: 0;
+}
+
+.menu {
+        text-align: right;
+}
+
+.menu li {
+        list-style: none;
+        display: inline;
+        padding-right: 30px;
+}
+
+.menu a {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+}
+
+.menu a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+}
+
+.logo-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        margin-top: -10px;
+}
+
+.logo-img {
+        position: relative;
+}
+
+.logo {
+        margin-bottom: 25px;
+        letter-spacing: -2px;
+}
+
+.logo span {
+        margin: auto;
+        font-family: 'Product Sans', Courier, monospace;
+        font-size: 90px;
+        font-weight: 500;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+}
+
+.blue-logo, .plus-img {
+        color: #4285F4;
+}
+
+.red-logo {
+        color: #DB4437;
+}
+
+.yellow-logo {
+        color: #F4B400;
+}
+
+.green-logo {
+        color: #0F9D58;
+}
+
+.plus-img {
+        position: absolute;
+        top: 90px;
+        right: 2px;
+        font-size: 18px;
+        font-weight: 100;
+}
+
+.form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+}
+
+.search-bar {
+        width: 580px;
+        height: 47px;
+        padding: 10px 50px;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+        background-image: url("../images/search.png");
+        background-position: 15px center;
+        background-repeat: no-repeat;
+        background-size: 17px;
+        transition: box-shadow 0.3s ease;
+        outline: none;
+        font-size: 16px;
+        color: #333;
+        overflow: auto;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+}
+
+.search-bar:hover,
+.search-bar:active,
+.search-bar:focus {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3)
+}
+
+.butn {
+        height: 35px;
+        font-size: 14px;     
+        color: #333;
+        border: none;
+        border-radius: 3px;
+        margin: 0px 5px;
+        padding: 0px 15px;
+        cursor: pointer;
+        background-color: #f8f9fa;
+
+}
+
+.butn:hover {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        padding: 1px 14px;
+}
+
+.butn:focus {
+        border: 1px solid blue;
+        outline: none;
+}
