@@ -1,0 +1,70 @@
+name: Deploy Google Clone
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 16.16.74.94
+          username: ubuntu
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            set -e
+
+            # Define log file with timestamp
+            LOG_FILE="/home/ubuntu/logs/google-clone"
+            TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
+
+            # Get commit message from GitHub Actions
+            COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
+
+            # Separate logs from previous runs
+            echo -e "\n\n---------------------------" | tee -a $LOG_FILE
+            echo "🚀 [$TIMESTAMP] Deploying -> $COMMIT_MESSAGE" | tee -a $LOG_FILE
+
+            echo "📂 [$TIMESTAMP] Navigating to project directory..." | tee -a $LOG_FILE
+            cd /var/www/html/google-clone
+
+            echo "📜 [$TIMESTAMP] Ensuring a clean state..." | tee -a $LOG_FILE
+            # git clean -fd  # Remove untracked files and directories
+            git fetch origin main
+            git reset --hard origin/main 
+
+            # Ensure log directory exists
+            mkdir -p /home/ubuntu/logs
+
+            echo "🚀 [$TIMESTAMP] Pulling latest changes..." | tee -a $LOG_FILE
+            git pull origin main | tee -a $LOG_FILE || { 
+              echo "❌ [$TIMESTAMP] Git pull failed! Rolling back..." | tee -a $LOG_FILE
+              git reset --hard origin/main;  # Reset to the last known working state
+              sudo systemctl reload nginx;
+              exit 1; 
+            }
+
+            echo "🔄 [$TIMESTAMP] Reloading Nginx..." | tee -a $LOG_FILE
+            sudo systemctl reload nginx
+
+            echo "✅ [$TIMESTAMP] Deployment successful!" | tee -a $LOG_FILE
+
+      - name: Notify on Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: 'emmanueldev247',
+              repo: 'google-clone',
+              title: '🚨 Deployment Failed!',
+              body: 'The latest deployment failed. Check the logs on the server for more details.\n\nCommit: **${{ github.event.head_commit.message }}**\n\n[View Logs](http://16.16.74.94/logs/google-clone)'
+            })
