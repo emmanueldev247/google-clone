@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -29,6 +33,9 @@ jobs:
             # Get commit message from GitHub Actions
             COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
 
+            # Ensure log directory exists
+            mkdir -p /home/ubuntu/logs
+
             # Separate logs from previous runs
             echo -e "\n\n---------------------------" | tee -a $LOG_FILE
             echo "🚀 [$TIMESTAMP] Deploying -> $COMMIT_MESSAGE" | tee -a $LOG_FILE
@@ -38,12 +45,8 @@ jobs:
 
             echo "📜 [$TIMESTAMP] Ensuring a clean state..." | tee -a $LOG_FILE
             git clean -fd  # Remove untracked files and directories
-            git stash  # Stash any uncommitted changes
             git fetch origin main
             git reset --hard origin/main 
-
-            # Ensure log directory exists
-            mkdir -p /home/ubuntu/logs
 
             echo "🚀 [$TIMESTAMP] Pulling latest changes..." | tee -a $LOG_FILE
             git pull origin main | tee -a $LOG_FILE || { 
@@ -62,6 +65,7 @@ jobs:
         if: failure()
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.rest.issues.create({
               owner: 'emmanueldev247',
