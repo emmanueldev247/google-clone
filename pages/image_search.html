@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-with, initial-scale=1.0"> 
-        <title>Image Search</title>
-        <link rel="stylesheet" type="text/css" href="../styles/style.css">
-    </head>
-    <body>
-        <div class="menu">
-            <ul>
-                <li><a href="../index.html">Google Search</a></li>
-            </ul>
-        </div>
-        <div class="logo-form">
-            <div class="logo-img">
-                <div class="logo">
-                    <span class="blue-logo">G</span><span class="red-logo">o</span><span class="yellow-logo">o</span><span class="blue-logo">g</span><span class="green-logo">l</span><span class="red-logo">e</span>
-                </div>
-                <span class="plus-img">images</span>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Image Search</title>
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+</head>
+
+<body>
+    <div class="menu">
+        <ul>
+            <li><a href="../index.html">Google Search</a></li>
+        </ul>
+    </div>
+    <div class="logo-form">
+        <div class="logo-img">
+            <div class="logo">
+                <span class="blue-logo">G</span><span class="red-logo">o</span><span class="yellow-logo">o</span><span
+                    class="blue-logo">g</span><span class="green-logo">l</span><span class="red-logo">e</span>
             </div>
-            <div>
-                <form action="https://www.google.com/search">
-                    <input type="text" name="q" class="search-bar"> <br/>
-                    <input type="hidden" name="tbm" value="isch"/>
-                    <input type="submit" class="butn" value="Google Search" />
-                </form>
-            </div>
+            <span class="plus-img">images</span>
         </div>
-    </body>
+        <div class="form">
+            <form action="https://www.google.com/search">
+                <input type="text" name="q" class="search-bar" id="searchQuery" placeholder="Search Google images">
+                <input type="hidden" name="tbm" value="isch" />
+                <input type="submit" class="butn search-btn" value="Google Search" />
+                <span class="no-search">Enter a search data</span>
+            </form>
+        </div>
+    </div>
+
+    <script src="../scripts/script.js"></script>
+</body>
+
 </html>

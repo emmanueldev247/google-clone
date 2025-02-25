@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-with, initial-scale=1.0" />
-        <title>Advanced Search</title>
-        <link rel="stylesheet" type="text/css" href="../styles/as_style.css" />
-    </head>
-    <body>
-        <div class="logo-menu">
-            <div class="logo" id="logoDiv">
-                <span class="blue-logo">G</span><span class="red-logo">o</span>
-                <span class="yellow-logo">o</span>
-                <span class="blue-logo">g</span>
-                <span class="green-logo">l</span>
-                <span class="red-logo">e</span>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="../index.html">Google Search</a></li>
-                </ul>
-            </div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-with, initial-scale=1.0" />
+    <title>Advanced Search</title>
+    <link rel="stylesheet" type="text/css" href="../styles/as_style.css" />
+</head>
+
+<body>
+    <div class="logo-menu">
+        <div class="logo" id="logoDiv">
+            <span class="blue-logo">G</span><span class="red-logo">o</span><span class="yellow-logo
+            ">o</span><span class="blue-logo">g</span><span class="green-logo">l</span><span class="red-logo">e</span>
         </div>
-        <h3>Advanced Search</h3>
-        <hr/>
-        <p class="find-text">Find pages with...</p>
-        <div class="as-form">
-            <form action="https://www.google.com/search">
-                <div class="input-group">
-                    <span class="search-parameter">all these words:</span>
-                    <input type="text" name="as_q" class="as-field" id="atw"/>
-                </div>
-                <div class="input-group">
-                    <span class="search-parameter">this exact word or phrase:</span>
-                    <input type="text" name="as_epq" class="as-field" />
-                </div>
-                <div class="input-group">
-                    <span class="search-parameter">any of these words:</span>
-                    <input type="text" name="as_oq" class="as-field" />
-                </div>
-                <div class="input-group">
-                    <span class="search-parameter">none of these words:</span>
-                    <input type="text" name="as_eq" class="as-field" />
-                </div>
-                <input type="submit" class="as-butn" value="Advanced Search" />
-            </form>
+        <div class="menu">
+            <ul>
+                <li><a href="../index.html">Google Search</a></li>
+            </ul>
         </div>
-    </body>
+    </div>
+    <h3>Advanced Search</h3>
+    <hr />
+    <p class="find-text">Find pages with...</p>
+    <div class="as-form">
+        <form action="https://www.google.com/search">
+            <div class="input-group">
+                <span class="search-parameter">all these words:</span>
+                <input type="text" name="as_q" class="as-field" id="atw" />
+            </div>
+            <div class="input-group">
+                <span class="search-parameter">this exact word or phrase:</span>
+                <input type="text" name="as_epq" class="as-field" />
+            </div>
+            <div class="input-group">
+                <span class="search-parameter">any of these words:</span>
+                <input type="text" name="as_oq" class="as-field" />
+            </div>
+            <div class="input-group">
+                <span class="search-parameter">none of these words:</span>
+                <input type="text" name="as_eq" class="as-field" />
+            </div>
+            <input type="submit" class="as-butn" value="Advanced Search" />
+        </form>
+        <span class="no-search">Enter a search data</span>
+    </div>
+
+    <script src="../scripts/script.js"></script>
+</body>
+
 </html>
